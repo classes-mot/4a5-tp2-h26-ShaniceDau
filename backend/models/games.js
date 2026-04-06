@@ -8,4 +8,4 @@ const gameSchemas = new mongoose.Schema({
 
 })
 
-export const Games = mongoose.model('Games', gameSchemas);
+export const Game = mongoose.model('Games', gameSchemas);
