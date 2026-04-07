@@ -5,16 +5,12 @@ const checkAuth = (req, res, next) => {
     if (req.method === 'OPTIONS') {
       return next();
     }
-    const token = req.headers.authorization.split(' ')[1]; // Authorization: 'Bearer TOKEN'
+    const token = req.headers.authorization.split(" ")[1]; // 'Bearer TOKEN'
     if (!token) {
-      throw new Error('Authentication failed!');
+    throw new Error("Authentification échouée...");
     }
-    const decodedToken = jwt.verify(token, 'cleSuperSecrete!');
-    console.log('---avant----');
-    console.log(req.userData);
-    req.userData = { userId: decodedToken.userId };
-    console.log('----apres---');
-    console.log(req.userData);
+    const decodedToken = jwt.verify(token, "shuSH2!");
+    req.userData = { userId: decodedToken.userId, role: decodedToken.role };
     next();
   } catch (err) {
     const error = new HttpError('Authentication failed!', 401);

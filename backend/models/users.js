@@ -7,10 +7,9 @@ const userSchema = new mongoose.Schema({
     games: [
         {
             type: mongoose.Types.ObjectId,
-            required: true,
-            ref: 'Games', 
+            ref: 'Game', 
         },
     ],
 });
 
-export const User = mongoose.model('User', games)
+export const User = mongoose.model('User', userSchema)

@@ -1,7 +1,7 @@
 import express from 'express';
 import { check } from 'express-validator';
-import checkAuth from '../middleware/check-auth';
-import gamesController from '../controllers/games-controller';
+import checkAuth from '../middleware/check-auth.js';
+import gamesController from '../controllers/games-controller.js';
 
 const router = express.Router();
 
@@ -19,7 +19,6 @@ router.post(
     check('categorie').not().isEmpty(),
     check('nombreJoueurs').not().isEmpty(),
     check('duree').not().isEmpty(),
-    checkAuth
   ],
   gamesController.createGame
 );

@@ -29,7 +29,7 @@ const getGamesById = async (req, res, next) => {
   
   if (!game) {
     
-    return next(new HttpError('Tâche non trouvée', 404));
+    return next(new HttpError('Jeu non trouvée', 404));
   }
   
   res.json({ game: game.toObject({ getters: true }) }); 
@@ -44,6 +44,20 @@ const createGame = async (req, res, next) => {
     );
   }
   const { titre, categorie, nombreJoueurs, duree } = req.body;
+
+  let user;
+  const userId = req.userData.userId;
+  
+    try {
+      user = await User.findById(userId);
+    } catch (err){
+      console.error(err);
+        const error = new HttpError(
+          'Error server',
+          500
+        );
+        return next(error);
+    }
 
   const createdGame = new Game({
     titre,
@@ -90,9 +104,9 @@ const deleteGame = async (req, res, next) => {
     const game = await Game.findByIdAndDelete(gameId);
 
     if(!game){
-      return res.status(404).json({ message: 'Tâche non trouvée' });
+      return res.status(404).json({ message: 'Jeu non trouvée' });
     }
-    return res.status(200).json({ message: 'Tâche supprimée' })
+    return res.status(200).json({ message: 'Jeu supprimée' })
   }catch(err){
     console.log('Opération BD échouée...', err);
     return next(new HttpError('Opération BD échouée...', 500))
