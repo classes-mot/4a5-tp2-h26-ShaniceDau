@@ -1,0 +1,207 @@
+{
+  "info": {
+    "_postman_id": "65ff9aba-fbf7-423a-b868-79136b284e47",
+    "name": "/api/games",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "52765569",
+    "_collection_link": "https://go.postman.co/collection/52765569-65ff9aba-fbf7-423a-b868-79136b284e47?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Add Game",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWQ0OWVlOTQ1MWY4NDViOWYzMDc4ZTQiLCJlbWFpbCI6InNoYW5pY2UuZGF1ZGllckBob3RtYWlsLmNvbSIsImlhdCI6MTc3NTU0MjE3OCwiZXhwIjoxNzc1NTQ1Nzc4fQ.vx-1NLwXrF4_-o8q9B_i48I-vJJ2HjJhMYqHeae8NuA",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"titre\": \"Echecs\",\n    \"categorie\": \"Strategie\",\n    \"nombreJoueurs\": 2,\n    \"duree\": \"60 min\" \n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/games",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "games"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Games",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"titre\": \"serpent et échelle\",\r\n    \"categorie\": \"Éducatif\",\r\n    \"nombreJoueurs\": 4,\r\n    \"duree\": \"30 min\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/games",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "games"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Game (ID)",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"titre\": \"Echecs\",\r\n    \"categorie\": \"Strategie\",\r\n    \"nombreJoueurs\": 2,\r\n    \"duree\": \"60 min\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/games/69d4ad36a8817144020f523f",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "games",
+            "69d4ad36a8817144020f523f"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "MAJ Game",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWQ0OWVlOTQ1MWY4NDViOWYzMDc4ZTQiLCJlbWFpbCI6InNoYW5pY2UuZGF1ZGllckBob3RtYWlsLmNvbSIsImlhdCI6MTc3NTU0NjM0MiwiZXhwIjoxNzc1NTQ5OTQyfQ.kYNPkMyOWiF3zWUDimF85Rynz_nyD1tAeKpOAYO38kw",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWQ0OWVlOTQ1MWY4NDViOWYzMDc4ZTQiLCJlbWFpbCI6InNoYW5pY2UuZGF1ZGllckBob3RtYWlsLmNvbSIsImlhdCI6MTc3NTU0NjM0MiwiZXhwIjoxNzc1NTQ5OTQyfQ.kYNPkMyOWiF3zWUDimF85Rynz_nyD1tAeKpOAYO38kw",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"titre\": \"Uno\",\r\n    \"categorie\": \"Strategie\",\r\n    \"nombreJoueurs\": 2,\r\n    \"duree\": \"30 min\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/games/69d4ad36a8817144020f523f",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "games",
+            "69d4ad36a8817144020f523f"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Supprimer",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWQ0OWVlOTQ1MWY4NDViOWYzMDc4ZTQiLCJlbWFpbCI6InNoYW5pY2UuZGF1ZGllckBob3RtYWlsLmNvbSIsImlhdCI6MTc3NTU0NjM0MiwiZXhwIjoxNzc1NTQ5OTQyfQ.kYNPkMyOWiF3zWUDimF85Rynz_nyD1tAeKpOAYO38kw",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWQ0OWVlOTQ1MWY4NDViOWYzMDc4ZTQiLCJlbWFpbCI6InNoYW5pY2UuZGF1ZGllckBob3RtYWlsLmNvbSIsImlhdCI6MTc3NTU0NjM0MiwiZXhwIjoxNzc1NTQ5OTQyfQ.kYNPkMyOWiF3zWUDimF85Rynz_nyD1tAeKpOAYO38kw",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"titre\": \"Uno\",\r\n    \"categorie\": \"Strategie\",\r\n    \"nombreJoueurs\": 2,\r\n    \"duree\": \"30 min\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/games/69d4ad36a8817144020f523f",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "games",
+            "69d4ad36a8817144020f523f"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
