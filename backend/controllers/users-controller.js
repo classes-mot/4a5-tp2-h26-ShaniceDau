@@ -29,7 +29,7 @@ const registerUser = async (req, res, next) => {
   try {
     await createdUser.save();
   } catch (err) {
-    return next(new HttpError('Enregistrement échoué.', 500));
+    return next(new HttpError('Authentification échoué.', 500));
   }
 
   res.status(201).json({

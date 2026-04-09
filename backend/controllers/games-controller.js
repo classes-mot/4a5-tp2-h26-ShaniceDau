@@ -4,18 +4,20 @@ import jwt from 'jsonwebtoken';
 import { Game } from '../models/games.js';
 import { User } from '../models/users.js';
 
+//getGames
 const getGames = async (req, res, next) => {
   let games;
   try {
     games = await Game.find();
   }catch(err){
-    console.log('Opération BD échouée...', err);
-    return next(new HttpError('Opération BD échouée...', 500))
+    console.log("Échec de l'opération sur la base de données", err);
+    return next(new HttpError("Échec de l'opération sur la base de données", 500))
   }
 
   res.json({ games: games.map((t) => t.toObject({ getters: true })) });
 };
 
+//getById
 const getGamesById = async (req, res, next) => {
   const gameId = req.params.id; 
   
@@ -23,8 +25,8 @@ const getGamesById = async (req, res, next) => {
   try{
     game = await Game.findById(gameId);
   }catch(err){
-    console.log('Opération BD échouée...', err);
-    return next(new HttpError('Opération BD échouée...', 500))
+    console.log("Échec de l'opération sur la base de données", err);
+    return next(new HttpError("Échec de l'opération sur la base de données", 500))
   }
   
   if (!game) {
@@ -35,7 +37,7 @@ const getGamesById = async (req, res, next) => {
   res.json({ game: game.toObject({ getters: true }) }); 
 };
 
-//POST
+//post
 const createGame = async (req, res, next) => {
   const validationErrors = validationResult(req);
   if (!validationErrors.isEmpty()) {
@@ -69,14 +71,14 @@ const createGame = async (req, res, next) => {
   try{
     await createdGame.save();
   }catch (err){
-    console.log('Ajout dans la BD échouée...', err);
-    return next(new HttpError('Ajout dans la BD échouée...', 500))
+    console.log("L'action sur la BD a échoué", err);
+    return next(new HttpError("L'action sur la BD a échoué", 500))
   }
 
   res.status(201).json({ game: createdGame });
 };
 
-//PUT
+//put
 const updateGame = async(req, res, next) => {
   const { titre, categorie, nombreJoueurs, duree } = req.body;
   const gameId = req.params.id;
@@ -90,14 +92,14 @@ const updateGame = async(req, res, next) => {
     updatedGame.duree = duree;
     await updatedGame.save();
   }catch (err){
-    console.log('Ajout dans la BD échouée...', err);
-    return next(new HttpError('Ajout dans la BD échouée...', 500))
+    console.log("L'action sur la BD a échoué", err);
+    return next(new HttpError("L'action sur la BD a échoué", 500))
   }
 
   res.status(200).json({ game: updatedGame });
 };
 
-//DELETE
+//delete
 const deleteGame = async (req, res, next) => {
   const gameId = req.params.id;
   try{
@@ -108,8 +110,8 @@ const deleteGame = async (req, res, next) => {
     }
     return res.status(200).json({ message: 'Jeu supprimée' })
   }catch(err){
-    console.log('Opération BD échouée...', err);
-    return next(new HttpError('Opération BD échouée...', 500))
+    console.log("Échec de l'opération sur la base de données", err);
+    return next(new HttpError("Échec de l'opération sur la base de données", 500))
   }
  
 };
